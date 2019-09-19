@@ -18,7 +18,8 @@ import { GridContent, PageHeaderWrapper, RouteContext } from '@ant-design/pro-la
 import React, { Component, Fragment } from 'react';
 import classNames from 'classnames';
 import { connect } from 'dva';
-import styles from './style.less';
+import styles from './teststyle.less';
+import { findDOMNode } from 'react-dom';
 
 const { Step } = Steps;
 const operationTabList = [
@@ -40,6 +41,11 @@ const columns = [
     title: '操作类型',
     dataIndex: 'type',
     key: 'type',
+    render: plain => (
+      <Tooltip placement="topLeft" title={plain}>
+        {plain}
+      </Tooltip>
+    ),
   },
   {
     title: '操作人',
@@ -67,6 +73,11 @@ const columns = [
     title: '备注',
     dataIndex: 'memo',
     key: 'memo',
+    render: (text, records, index) => (
+      <Button type="primary" onClick={() => this.showClazz(records, index)}>
+        查看
+      </Button>
+    ),
   },
 ];
 
