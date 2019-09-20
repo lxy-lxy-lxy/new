@@ -245,6 +245,11 @@ export default {
                   path: '/test/testone',
                   component: './test/testone',
                 },
+                {
+                  name: 'testsecond',
+                  path: '/test/testsecond',
+                  component: './test/testsecond',
+                },
               ],
             },
             {

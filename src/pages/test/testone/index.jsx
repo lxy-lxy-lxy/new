@@ -73,8 +73,8 @@ const columns = [
     title: '备注',
     dataIndex: 'memo',
     key: 'memo',
-    render: (text, records, index) => (
-      <Button type="primary" onClick={() => this.showClazz(records, index)}>
+    render: text => (
+      <Button type="primary" onClick={() => this.reduce('你好')}>
         查看
       </Button>
     ),
