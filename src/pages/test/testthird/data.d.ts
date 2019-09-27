@@ -1,4 +1,4 @@
-export interface TableListItem {
+export interface TestListItem {
   key: number;
   disabled?: boolean;
   href: string;
@@ -6,7 +6,7 @@ export interface TableListItem {
   name: string;
   title: string;
   owner: string;
-  desc: string;
+  aims: string;
   callNo: number;
   status: number;
   updatedAt: Date;
@@ -21,7 +21,7 @@ export interface TableListPagination {
 }
 
 export interface TableListData {
-  list: TableListItem[];
+  list: TestListItem[];
   pagination: Partial<TableListPagination>;
 }
 

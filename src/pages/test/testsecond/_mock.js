@@ -1,5 +1,5 @@
 export default {
-  'POST  /api/test': (_, res) => {
+  'POST  /api/testsecond': (_, res) => {
     res.send({
       message: 'Ok',
     });

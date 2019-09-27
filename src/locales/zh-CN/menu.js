@@ -34,6 +34,7 @@ export default {
   'menu.test': '测试页',
   'menu.test.testone': '功能测试',
   'menu.test.testsecond': '一般测试',
+  'menu.test.testthird': '编辑测试',
   'menu.result': '结果页',
   'menu.result.success': '成功页',
   'menu.result.fail': '失败页',

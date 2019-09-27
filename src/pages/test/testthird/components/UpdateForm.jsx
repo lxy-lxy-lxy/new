@@ -28,7 +28,7 @@ class UpdateForm extends Component {
     this.state = {
       formVals: {
         name: props.values.name,
-        desc: props.values.desc,
+        aims: props.values.aims,
         key: props.values.key,
         target: '0',
         template: '0',
@@ -171,8 +171,8 @@ class UpdateForm extends Component {
           initialValue: formVals.name,
         })(<Input placeholder="请输入" />)}
       </FormItem>,
-      <FormItem key="desc" {...this.formLayout} label="规则描述">
-        {form.getFieldDecorator('desc', {
+      <FormItem key="aims" {...this.formLayout} label="规则描述">
+        {form.getFieldDecorator('aims', {
           rules: [
             {
               required: true,
@@ -180,7 +180,7 @@ class UpdateForm extends Component {
               min: 5,
             },
           ],
-          initialValue: formVals.desc,
+          initialValue: formVals.aims,
         })(<TextArea rows={4} placeholder="请输入至少五个字符" />)}
       </FormItem>,
     ];

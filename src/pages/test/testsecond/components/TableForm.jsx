@@ -320,6 +320,18 @@ class TableForm extends PureComponent {
     };
     return (
       <Fragment>
+        <Button
+          style={{
+            width: '100%',
+            marginTop: 16,
+            marginBottom: 8,
+          }}
+          type="dashed"
+          onClick={this.newMember}
+          icon="plus"
+        >
+          新增成员
+        </Button>
         <Table
           loading={loading}
           columns={this.columns}
@@ -338,18 +350,6 @@ class TableForm extends PureComponent {
           bordered
           rowClassName={record => (record.editable ? styles.editable : '')}
         />
-        <Button
-          style={{
-            width: '100%',
-            marginTop: 16,
-            marginBottom: 8,
-          }}
-          type="dashed"
-          onClick={this.newMember}
-          icon="plus"
-        >
-          新增成员
-        </Button>
       </Fragment>
     );
   }

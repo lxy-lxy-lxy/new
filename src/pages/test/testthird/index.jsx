@@ -36,11 +36,11 @@ const statusMap = ['default', 'processing', 'success', 'error'];
 const status = ['关闭', '运行中', '已上线', '异常'];
 
 /* eslint react/no-multi-comp:0 */
-@connect(({ listTableList, loading }) => ({
-  listTableList,
+@connect(({ testThirdList, loading }) => ({
+  testThirdList,
   loading: loading.models.rule,
 }))
-class TableList extends Component {
+class TestTableList extends Component {
   state = {
     modalVisible: false,
     updateModalVisible: false,
@@ -52,21 +52,17 @@ class TableList extends Component {
 
   columns = [
     {
-      title: '规则名称',
+      title: '原币种',
       dataIndex: 'name',
     },
     {
-      title: '描述',
-      dataIndex: 'desc',
+      title: '目标币种',
+      dataIndex: 'aims',
     },
     {
-      title: '服务调用次数',
+      title: '汇率',
       dataIndex: 'callNo',
-      sorter: true,
-      align: 'right',
-      render: val => `${val} 万`,
-      // mark to display a total number
-      needTotal: true,
+      render: val => `${val}`,
     },
     {
       title: '状态',
@@ -95,7 +91,7 @@ class TableList extends Component {
       },
     },
     {
-      title: '上次调度时间',
+      title: '有效时间',
       dataIndex: 'updatedAt',
       sorter: true,
       render: val => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
@@ -104,9 +100,9 @@ class TableList extends Component {
       title: '操作',
       render: (text, record) => (
         <Fragment>
-          <a onClick={() => this.handleUpdateModalVisible(true, record)}>配置</a>
+          <a onClick={() => this.handleUpdateModalVisible(true, record)}>编辑</a>
           <Divider type="vertical" />
-          <a href="">订阅警报</a>
+          <a href="">删除汇率</a>
         </Fragment>
       ),
     },
@@ -115,7 +111,7 @@ class TableList extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch({
-      type: 'listTableList/fetch',
+      type: 'testThirdList/fetch',
     });
   }
 
@@ -139,7 +135,7 @@ class TableList extends Component {
     }
 
     dispatch({
-      type: 'listTableList/fetch',
+      type: 'testThirdList/fetch',
       payload: params,
     });
   };
@@ -151,7 +147,7 @@ class TableList extends Component {
       formValues: {},
     });
     dispatch({
-      type: 'listTableList/fetch',
+      type: 'testThirdList/fetch',
       payload: {},
     });
   };
@@ -171,7 +167,7 @@ class TableList extends Component {
     switch (e.key) {
       case 'remove':
         dispatch({
-          type: 'listTableList/remove',
+          type: 'testThirdList/remove',
           payload: {
             key: selectedRows.map(row => row.key),
           },
@@ -207,7 +203,7 @@ class TableList extends Component {
         formValues: values,
       });
       dispatch({
-        type: 'listTableList/fetch',
+        type: 'testThirdList/fetch',
         payload: values,
       });
     });
@@ -229,9 +225,11 @@ class TableList extends Component {
   handleAdd = fields => {
     const { dispatch } = this.props;
     dispatch({
-      type: 'listTableList/add',
+      type: 'testThirdList/add',
       payload: {
-        desc: fields.desc,
+        name: fields.name,
+        aims: fields.aims,
+        callNo: fields.callNo,
       },
     });
     message.success('添加成功');
@@ -241,10 +239,11 @@ class TableList extends Component {
   handleUpdate = fields => {
     const { dispatch } = this.props;
     dispatch({
-      type: 'listTableList/update',
+      type: 'testThirdList/update',
       payload: {
         name: fields.name,
-        desc: fields.desc,
+        aims: fields.aims,
+        callNo: fields.callNo,
         key: fields.key,
       },
     });
@@ -450,7 +449,7 @@ class TableList extends Component {
 
   render() {
     const {
-      listTableList: { data },
+      testThirdList: { data },
       loading,
     } = this.props;
     const { selectedRows, modalVisible, updateModalVisible, stepFormValues } = this.state;
@@ -511,4 +510,4 @@ class TableList extends Component {
   }
 }
 
-export default Form.create()(TableList);
+export default Form.create()(TestTableList);

@@ -250,6 +250,11 @@ export default {
                   path: '/test/testsecond',
                   component: './test/testsecond',
                 },
+                {
+                  name: 'testthird',
+                  path: '/test/testthird',
+                  component: './test/testthird',
+                },
               ],
             },
             {

@@ -88,7 +88,7 @@ function postRule(req, res, u, b) {
   }
 
   const body = (b && b.body) || req.body;
-  const { method, name, aims, key } = body;
+  const { method, callNo, aims, name, key } = body;
 
   switch (method) {
     /* eslint no-case-declarations:0 */
@@ -109,7 +109,7 @@ function postRule(req, res, u, b) {
         title: `一个任务名称 ${i}`,
         owner: '曲丽丽',
         aims,
-        callNo: Math.floor(Math.random() * 1000),
+        callNo,
         status: Math.floor(Math.random() * 10) % 2,
         updatedAt: new Date(),
         createdAt: new Date(),
@@ -141,6 +141,6 @@ function postRule(req, res, u, b) {
 }
 
 export default {
-  'GET /api/rule': getRule,
-  'POST /api/rule': postRule,
+  'GET /api/thirdrule': getRule,
+  'POST /api/thirdrule': postRule,
 };
